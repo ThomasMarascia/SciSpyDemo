@@ -1,0 +1,124 @@
+[gd_scene load_steps=18 format=3 uid="uid://c71npvdo00dv6"]
+
+[ext_resource type="Texture2D" uid="uid://b8mnuexs80dag" path="res://art/backgroundresized.png" id="1_fdnbu"]
+[ext_resource type="Script" path="res://scripts/grid.gd" id="2_lbud7"]
+[ext_resource type="Texture2D" uid="uid://c5jqxn2xil0rf" path="res://art/basic_grid_background.png" id="3_fdwn8"]
+[ext_resource type="Script" path="res://scripts/bars_holder.gd" id="4_5w2xx"]
+[ext_resource type="PackedScene" uid="uid://cxews8jg8p2ij" path="res://Scenes/game_over.tscn" id="4_u8e0x"]
+[ext_resource type="PackedScene" uid="uid://cdt6y2tsdwwup" path="res://Scenes/top_ui.tscn" id="5_cyolu"]
+[ext_resource type="PackedScene" uid="uid://d25ca8t1ty8fp" path="res://Scenes/buttom_ui.tscn" id="6_fi47d"]
+[ext_resource type="PackedScene" uid="uid://deh1m5s1vrwgo" path="res://Scenes/goal_prefab.tscn" id="6_ya1d1"]
+[ext_resource type="PackedScene" uid="uid://dfywnqtfvvkl7" path="res://Scenes/pause.tscn" id="7_mjsy4"]
+[ext_resource type="Script" path="res://scripts/lock_holder.gd" id="7_xcoua"]
+[ext_resource type="Script" path="res://scripts/safe_holder.gd" id="8_t0r32"]
+[ext_resource type="Script" path="res://scripts/GoalHolder.gd" id="9_q67ov"]
+[ext_resource type="PackedScene" uid="uid://cmb8vmb0nwm4l" path="res://Scenes/goal.tscn" id="10_ea1mu"]
+[ext_resource type="Texture2D" uid="uid://iylqdfftn3bg" path="res://art/game_overmenu.png" id="11_sm5bk"]
+[ext_resource type="Texture2D" uid="uid://dpgkmidmitn5l" path="res://art/blue_piece.png" id="12_h3nj7"]
+[ext_resource type="PackedScene" path="res://Scenes/game_win_screen.tscn" id="15_3maqf"]
+[ext_resource type="Script" path="res://scripts/MusicPlayer.gd" id="15_t1h4y"]
+
+[node name="GameWindow" type="Node2D"]
+
+[node name="background" type="TextureRect" parent="."]
+offset_right = 648.0
+offset_bottom = 1152.0
+texture = ExtResource("1_fdnbu")
+
+[node name="grid_background" type="TextureRect" parent="."]
+offset_left = 24.0
+offset_top = 200.0
+offset_right = 624.0
+offset_bottom = 800.0
+texture = ExtResource("3_fdwn8")
+
+[node name="grid" type="Node2D" parent="."]
+process_mode = 1
+script = ExtResource("2_lbud7")
+width = 8
+height = 8
+x_start = 80
+y_start = 750
+offset = 70
+y_offset = 2
+piece_val = 10
+current_counter_value = 26
+
+[node name="top_ui" parent="grid" instance=ExtResource("5_cyolu")]
+goal_prefab = ExtResource("6_ya1d1")
+
+[node name="HintTimer" type="Timer" parent="grid"]
+wait_time = 3.0
+one_shot = true
+
+[node name="bars_holder" type="Node2D" parent="."]
+script = ExtResource("4_5w2xx")
+
+[node name="lock_holder" type="Node2D" parent="."]
+script = ExtResource("7_xcoua")
+
+[node name="safe_holder" type="Node2D" parent="."]
+script = ExtResource("8_t0r32")
+
+[node name="destroy_timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="collapse_timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="refill_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="swap_back_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="buttom_ui" parent="." instance=ExtResource("6_fi47d")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_u8e0x")]
+
+[node name="TextureRect" parent="CanvasLayer/Control/MarginContainer" index="0"]
+texture = ExtResource("11_sm5bk")
+
+[node name="Pause" parent="." instance=ExtResource("7_mjsy4")]
+
+[node name="GoalHolder" type="Node" parent="."]
+script = ExtResource("9_q67ov")
+
+[node name="Goal" parent="GoalHolder" instance=ExtResource("10_ea1mu")]
+goal_textures = ExtResource("12_h3nj7")
+max_needed = 5
+goal_string = "blue"
+
+[node name="Game Win Screen" parent="." instance=ExtResource("15_3maqf")]
+
+[node name="MusicPlayer" type="Node2D" parent="."]
+script = ExtResource("15_t1h4y")
+
+[connection signal="check_goal" from="grid" to="grid/top_ui" method="_on_grid_check_goal"]
+[connection signal="check_goal" from="grid" to="GoalHolder" method="_on_grid_check_goal"]
+[connection signal="damage_bars" from="grid" to="bars_holder" method="_on_grid_damage_bars"]
+[connection signal="damage_lock" from="grid" to="lock_holder" method="_on_grid_damage_lock"]
+[connection signal="damage_safe" from="grid" to="safe_holder" method="_on_grid_damage_safe"]
+[connection signal="game_over" from="grid" to="CanvasLayer" method="_on_grid_game_over"]
+[connection signal="make_bars" from="grid" to="bars_holder" method="_on_grid_make_bars"]
+[connection signal="make_lock" from="grid" to="lock_holder" method="_on_grid_make_lock"]
+[connection signal="make_safe" from="grid" to="safe_holder" method="_on_grid_make_safe"]
+[connection signal="play_sound" from="grid" to="MusicPlayer" method="_on_grid_play_sound"]
+[connection signal="update_counter" from="grid" to="grid/top_ui" method="_on_grid_update_counter"]
+[connection signal="update_score" from="grid" to="grid/top_ui" method="_on_grid_update_score"]
+[connection signal="timeout" from="grid/HintTimer" to="grid" method="_on_hint_timer_timeout"]
+[connection signal="remove_lock" from="lock_holder" to="grid" method="_on_lock_holder_remove_lock"]
+[connection signal="remove_safe" from="safe_holder" to="grid" method="_on_safe_holder_remove_safe"]
+[connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
+[connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
+[connection signal="timeout" from="refill_timer" to="grid" method="_on_refill_timer_timeout"]
+[connection signal="timeout" from="swap_back_timer" to="grid" method="_on_swap_back_timer_timeout"]
+[connection signal="create_goal" from="GoalHolder" to="grid/top_ui" method="_on_goal_holder_create_goal"]
+[connection signal="game_won" from="GoalHolder" to="grid" method="_on_goal_holder_game_won"]
+[connection signal="game_won" from="GoalHolder" to="Game Win Screen" method="_on_goal_holder_game_won"]
+
+[editable path="CanvasLayer"]

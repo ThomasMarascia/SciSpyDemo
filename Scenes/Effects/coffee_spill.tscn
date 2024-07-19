@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://fl41g8msypvi"]
+
+[ext_resource type="Script" path="res://scripts/coffee_spill.gd" id="1_h307a"]
+[ext_resource type="Texture2D" uid="uid://jpvkqyogxltn" path="res://art/Effects/coffee_spill_1.png" id="1_i61th"]
+[ext_resource type="Texture2D" uid="uid://colw8l8hdxhmx" path="res://art/Effects/coffee_spill_2.png" id="2_8c65k"]
+[ext_resource type="Texture2D" uid="uid://teamlf0tulg8" path="res://art/Effects/coffee_spill_3.png" id="3_trw2h"]
+[ext_resource type="Texture2D" uid="uid://bjhn4ktjdrfar" path="res://art/Effects/coffee_spill_4.png" id="4_mbpqs"]
+[ext_resource type="Texture2D" uid="uid://hlaoovuamp4u" path="res://art/Effects/coffee_spill_5.png" id="5_nps64"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ld2ip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_i61th")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8c65k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_trw2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mbpqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nps64")
+}],
+"loop": false,
+"name": &"coffee_spill",
+"speed": 12.0
+}]
+
+[node name="coffee_spill" type="Node2D"]
+script = ExtResource("1_h307a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ld2ip")
+animation = &"coffee_spill"
+frame = 4
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

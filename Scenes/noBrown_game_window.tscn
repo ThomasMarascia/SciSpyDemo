@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://csxjyyvgmpv04"]
+
+[ext_resource type="PackedScene" uid="uid://c71npvdo00dv6" path="res://Scenes/game_window.tscn" id="1_s762s"]
+
+[node name="GameWindow" instance=ExtResource("1_s762s")]
+
+[node name="grid" parent="." index="2"]
+levelNum = 1
+
+[editable path="CanvasLayer"]

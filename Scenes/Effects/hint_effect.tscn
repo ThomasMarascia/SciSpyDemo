@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo43qob401uol"]
+
+[ext_resource type="Script" path="res://scripts/HintEffect.gd" id="1_0xou4"]
+[ext_resource type="Shader" path="res://art/shaders/hint_effect.gdshader" id="2_jimqf"]
+[ext_resource type="Texture2D" uid="uid://btp44jd3pgyj" path="res://art/black_piece.png" id="2_o54fc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlhyu"]
+shader = ExtResource("2_jimqf")
+shader_parameter/blink_speed = 2.516
+shader_parameter/blink_intensity = 1.0
+
+[node name="HintEffect" type="Node2D"]
+use_parent_material = true
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_0xou4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qlhyu")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_o54fc")

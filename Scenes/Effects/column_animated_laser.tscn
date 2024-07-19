@@ -1,0 +1,75 @@
+[gd_scene load_steps=16 format=3 uid="uid://5v1alyerjbek"]
+
+[ext_resource type="Script" path="res://scripts/column_animated_laser.gd" id="1_7ef6j"]
+[ext_resource type="Texture2D" uid="uid://bil7ad3ndc2lx" path="res://art/Effects/laser-1.png" id="2_k8gde"]
+[ext_resource type="Texture2D" uid="uid://cfdkmbjirusvt" path="res://art/Effects/laser-2.png" id="3_q2yjq"]
+[ext_resource type="Texture2D" uid="uid://7c313cx4yu32" path="res://art/Effects/laser-3.png" id="4_5mctg"]
+[ext_resource type="Texture2D" uid="uid://dsba4dyrmixwu" path="res://art/Effects/laser-4.png" id="5_i8363"]
+[ext_resource type="Texture2D" uid="uid://dmsckx8m5bamw" path="res://art/Effects/laser-5.png" id="6_f7xbk"]
+[ext_resource type="Texture2D" uid="uid://cb2jowjerag4e" path="res://art/Effects/laser-6.png" id="7_7xjj5"]
+[ext_resource type="Texture2D" uid="uid://j8dhejpcpofw" path="res://art/Effects/laser-7.png" id="8_yjb7j"]
+[ext_resource type="Texture2D" uid="uid://dnb0el4o71u4d" path="res://art/Effects/laser-8.png" id="9_njqe7"]
+[ext_resource type="Texture2D" uid="uid://dyctpv5kaqsb" path="res://art/Effects/laser-9.png" id="10_w5npi"]
+[ext_resource type="Texture2D" uid="uid://cqb44yn5cwuyu" path="res://art/Effects/laser-10.png" id="11_yeovx"]
+[ext_resource type="Texture2D" uid="uid://dgv8tm521rg7k" path="res://art/Effects/laser-11.png" id="12_23wev"]
+[ext_resource type="Texture2D" uid="uid://bv2eqdta8udg" path="res://art/Effects/laser-12.png" id="13_7hqa4"]
+[ext_resource type="Texture2D" uid="uid://cf8rt3mducy1w" path="res://art/Effects/laser-13.png" id="14_8ympa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtgul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k8gde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q2yjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5mctg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i8363")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f7xbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7xjj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yjb7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_njqe7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_w5npi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_yeovx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_23wev")
+}, {
+"duration": 2.0,
+"texture": ExtResource("13_7hqa4")
+}, {
+"duration": 2.0,
+"texture": ExtResource("14_8ympa")
+}],
+"loop": false,
+"name": &"col_laser",
+"speed": 12.0
+}]
+
+[node name="column_animated_laser" type="Node2D"]
+script = ExtResource("1_7ef6j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_wtgul")
+animation = &"col_laser"
+frame = 12
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=14 format=3 uid="uid://cjg8dcx6d8i32"]
+
+[ext_resource type="Script" path="res://scripts/red_explosion.gd" id="1_5r53u"]
+[ext_resource type="Texture2D" uid="uid://bx7m3yqmpjw01" path="res://art/Effects/red_1.png" id="2_18r7e"]
+[ext_resource type="Texture2D" uid="uid://4uxcocct05xs" path="res://art/Effects/red_2.png" id="3_gvxcx"]
+[ext_resource type="Texture2D" uid="uid://e1phisvjgot6" path="res://art/Effects/red_3.png" id="4_kcw2x"]
+[ext_resource type="Texture2D" uid="uid://0ot244jkqocy" path="res://art/Effects/red_4.png" id="5_uchib"]
+[ext_resource type="Texture2D" uid="uid://cipqlapqkwjyc" path="res://art/Effects/red_5.png" id="6_mo1b2"]
+[ext_resource type="Texture2D" uid="uid://dnig06ng8fd12" path="res://art/Effects/red_6.png" id="7_o7p5r"]
+[ext_resource type="Texture2D" uid="uid://cghws07ymmy4l" path="res://art/Effects/red_7.png" id="8_4aqje"]
+[ext_resource type="Texture2D" uid="uid://5lxbd3u8ykec" path="res://art/Effects/red_8.png" id="9_f5xux"]
+[ext_resource type="Texture2D" uid="uid://2sceqqy7sejw" path="res://art/Effects/red_9.png" id="10_op77e"]
+[ext_resource type="Texture2D" uid="uid://musm120y8w3r" path="res://art/Effects/red_10.png" id="11_yfony"]
+[ext_resource type="Texture2D" uid="uid://cc7uul4dajgow" path="res://art/Effects/red_11.png" id="12_jank0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i4mn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_18r7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gvxcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kcw2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uchib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mo1b2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_o7p5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4aqje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f5xux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f5xux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_op77e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_yfony")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jank0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jank0")
+}],
+"loop": false,
+"name": &"red",
+"speed": 20.0
+}]
+
+[node name="red_explosion" type="Node2D"]
+script = ExtResource("1_5r53u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_i4mn2")
+animation = &"red"
+frame = 12
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

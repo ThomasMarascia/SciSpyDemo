@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dywmxcfyyb3lp"]
+
+[ext_resource type="Script" path="res://scripts/lock_piece.gd" id="1_ykxlh"]
+[ext_resource type="Texture2D" uid="uid://cc5wqxrjnlbqs" path="res://art/lock_1.png" id="2_rx5to"]
+
+[node name="lock_piece" type="Node2D"]
+script = ExtResource("1_ykxlh")
+health = 1
+color = "lock"
+
+[node name="lock_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_rx5to")

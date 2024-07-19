@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bici5v2dy4082"]
+
+[ext_resource type="PackedScene" uid="uid://b87tm00nmh6e8" path="res://Scenes/BaseMenuPanel.tscn" id="1_i4nhl"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_8ivpo"]
+[ext_resource type="Texture2D" uid="uid://bu60jf5xdfyws" path="res://art/second_temp_logo-removebg-preview.png" id="3_mww21"]
+[ext_resource type="Texture2D" uid="uid://f48ycy7a3yik" path="res://art/start_take_3-removebg-preview.png" id="4_lmv3i"]
+[ext_resource type="Texture2D" uid="uid://bs3pcwues7rrd" path="res://art/settings_rm_background.png" id="5_abtxf"]
+[ext_resource type="Texture2D" uid="uid://5na34cqk6e8y" path="res://art/matthew.png" id="6_xk6hp"]
+[ext_resource type="Texture2D" uid="uid://cktqer11le6vy" path="res://art/oneill_no_bg.png" id="7_5g32a"]
+[ext_resource type="Texture2D" uid="uid://dv25mbde014ut" path="res://art/bree_ai-removebg-preview.png" id="8_8ff3r"]
+
+[node name="MainMenu" instance=ExtResource("1_i4nhl")]
+script = ExtResource("2_8ivpo")
+
+[node name="matthew" type="TextureRect" parent="." index="0"]
+offset_left = -34.0
+offset_top = 852.0
+offset_right = 296.0
+offset_bottom = 1171.0
+texture = ExtResource("6_xk6hp")
+
+[node name="oneil" type="TextureRect" parent="." index="1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 77.0
+offset_top = 287.0
+offset_right = 398.0
+offset_bottom = 585.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_5g32a")
+
+[node name="bree" type="TextureRect" parent="." index="2"]
+custom_minimum_size = Vector2(512, 218)
+offset_left = 212.0
+offset_top = 150.0
+offset_right = 825.0
+offset_bottom = 1262.0
+texture = ExtResource("8_8ff3r")
+
+[node name="Graphics" parent="MarginContainer/Buttons and Graphics" index="0"]
+custom_minimum_size = Vector2(512, 200)
+texture = ExtResource("3_mww21")
+
+[node name="Button1" parent="MarginContainer/Buttons and Graphics/Buttons" index="0"]
+size_flags_stretch_ratio = 10.0
+texture_normal = ExtResource("4_lmv3i")
+
+[node name="Button2" parent="MarginContainer/Buttons and Graphics/Buttons" index="1"]
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_abtxf")
+
+[node name="AnimationPlayer" parent="." index="4"]
+reset_on_save = false
+
+[connection signal="pressed" from="MarginContainer/Buttons and Graphics/Buttons/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="MarginContainer/Buttons and Graphics/Buttons/Button2" to="." method="_on_button_2_pressed"]

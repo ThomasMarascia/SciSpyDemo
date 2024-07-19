@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://dexonwrh3c4b5"]
+
+[ext_resource type="PackedScene" uid="uid://bici5v2dy4082" path="res://Scenes/main_menu.tscn" id="1_c2dqg"]
+[ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_gp6bp"]
+[ext_resource type="PackedScene" uid="uid://da70rbq6fwajk" path="res://Scenes/home_screen.tscn" id="3_s3kq8"]
+[ext_resource type="PackedScene" uid="uid://q5egh5k8pyd5" path="res://Scenes/settings.tscn" id="4_3cwmg"]
+[ext_resource type="Texture2D" uid="uid://c6jflittw6pl5" path="res://art/sound_on.png" id="5_2hkgb"]
+[ext_resource type="Texture2D" uid="uid://b8mnuexs80dag" path="res://art/backgroundresized.png" id="5_p118c"]
+[ext_resource type="Texture2D" uid="uid://134wh58gtdt0" path="res://art/sound_off.png" id="6_8xa22"]
+[ext_resource type="PackedScene" uid="uid://btvutl71vt8ur" path="res://Scenes/store.tscn" id="6_xl822"]
+[ext_resource type="Texture2D" uid="uid://e316anv21l8c" path="res://art/music_on.png" id="7_nkkqp"]
+[ext_resource type="Texture2D" uid="uid://pijexm37di1o" path="res://art/music_off.png" id="8_h12eh"]
+
+[node name="GameMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_gp6bp")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1, 1.06461)
+texture = ExtResource("5_p118c")
+
+[node name="home_screen" parent="." instance=ExtResource("3_s3kq8")]
+offset = Vector2(650, 0)
+transform = Transform2D(1, 0, 0, 1, 650, 0)
+
+[node name="Settings" parent="." instance=ExtResource("4_3cwmg")]
+offset = Vector2(650, 0)
+transform = Transform2D(1, 0, 0, 1, 650, 0)
+sound_on_texture = ExtResource("5_2hkgb")
+sound_off = ExtResource("6_8xa22")
+music_on = ExtResource("7_nkkqp")
+music_off = ExtResource("8_h12eh")
+
+[node name="MainMenu" parent="." instance=ExtResource("1_c2dqg")]
+offset = Vector2(650, 0)
+transform = Transform2D(1, 0, 0, 1, 650, 0)
+
+[node name="store" parent="." instance=ExtResource("6_xl822")]
+visible = false
+offset = Vector2(650, 0)
+transform = Transform2D(1, 0, 0, 1, 650, 0)
+
+[connection signal="docIsReady" from="." to="." method="_on_doc_is_ready"]
+[connection signal="read_avatar" from="." to="home_screen" method="_on_game_menu_read_avatar"]
+[connection signal="read_music" from="." to="Settings" method="_on_game_menu_read_music"]
+[connection signal="read_sound" from="." to="Settings" method="_on_game_menu_read_sound"]
+[connection signal="updateHome" from="." to="home_screen" method="_on_game_menu_update_home"]
+[connection signal="start_pressed" from="home_screen" to="." method="_on_home_screen_start_pressed"]
+[connection signal="back_button" from="Settings" to="." method="_on_settings_back_button"]
+[connection signal="play_pressed" from="MainMenu" to="." method="_on_main_menu_play_pressed"]
+[connection signal="settings_pressed" from="MainMenu" to="." method="_on_main_menu_settings_pressed"]

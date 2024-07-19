@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdt6y2tsdwwup"]
+
+[ext_resource type="Texture2D" uid="uid://cx746ftyyjron" path="res://art/scoreboard-pls-work.png" id="1_5q53e"]
+[ext_resource type="FontFile" uid="uid://brdyrj1xvcu5u" path="res://Fonts/Kenney Future.ttf" id="2_hhwvp"]
+[ext_resource type="Script" path="res://scripts/top_ui.gd" id="2_l4uep"]
+
+[node name="top_ui" type="TextureRect"]
+offset_left = -21.0
+offset_top = -19.0
+offset_right = 814.0
+offset_bottom = 280.0
+scale = Vector2(0.824847, 0.776704)
+texture = ExtResource("1_5q53e")
+script = ExtResource("2_l4uep")
+
+[node name="score" type="Label" parent="."]
+layout_mode = 2
+offset_left = 40.0
+offset_top = 85.0
+offset_right = 272.0
+offset_bottom = 264.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_hhwvp")
+theme_override_font_sizes/font_size = 80
+
+[node name="moves" type="Label" parent="."]
+layout_mode = 2
+offset_left = 301.0
+offset_top = 82.0
+offset_right = 539.0
+offset_bottom = 268.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_hhwvp")
+theme_override_font_sizes/font_size = 150
+horizontal_alignment = 1
+
+[node name="Goals" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 563.0
+offset_top = 87.0
+offset_right = 798.0
+offset_bottom = 263.0
+size_flags_horizontal = 3

@@ -1,0 +1,5 @@
+# Godot 4+ specific ignores
+.godot/
+
+# test save file
+scripts/test.res

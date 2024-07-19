@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://da70rbq6fwajk"]
+
+[ext_resource type="PackedScene" uid="uid://b87tm00nmh6e8" path="res://Scenes/BaseMenuPanel.tscn" id="1_0mvt2"]
+[ext_resource type="Script" path="res://scripts/home_screen.gd" id="2_4udb1"]
+[ext_resource type="Texture2D" uid="uid://dal8owdc42ls7" path="res://art/money-removebg-preview.png" id="3_4jk7t"]
+[ext_resource type="Texture2D" uid="uid://dv25mbde014ut" path="res://art/bree_ai-removebg-preview.png" id="3_ngrvv"]
+[ext_resource type="Texture2D" uid="uid://5na34cqk6e8y" path="res://art/matthew.png" id="4_2sc4i"]
+[ext_resource type="Texture2D" uid="uid://f48ycy7a3yik" path="res://art/start_take_3-removebg-preview.png" id="4_g5xmr"]
+[ext_resource type="Texture2D" uid="uid://dojvth7kpy3tl" path="res://art/lives-removebg-preview.png" id="4_rceun"]
+[ext_resource type="Texture2D" uid="uid://cktqer11le6vy" path="res://art/oneill_no_bg.png" id="5_6m87a"]
+[ext_resource type="Texture2D" uid="uid://bioaifcjw6wcm" path="res://art/cat_no_bg.png" id="6_4ai6o"]
+[ext_resource type="Theme" uid="uid://4pj1wlgtjcwe" path="res://art/themes/defTheme.tres" id="6_y7mif"]
+
+[node name="home_screen" instance=ExtResource("1_0mvt2")]
+script = ExtResource("2_4udb1")
+avatar0 = ExtResource("3_ngrvv")
+avatar1 = ExtResource("4_2sc4i")
+avatar2 = ExtResource("5_6m87a")
+
+[node name="Graphics" parent="MarginContainer/Buttons and Graphics" index="0"]
+custom_minimum_size = Vector2(512, 218)
+
+[node name="Button1" parent="MarginContainer/Buttons and Graphics/Buttons" index="0"]
+show_behind_parent = true
+custom_minimum_size = Vector2(512, 500)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_4ai6o")
+stretch_mode = 0
+
+[node name="Button2" parent="MarginContainer/Buttons and Graphics/Buttons" index="1"]
+texture_normal = ExtResource("4_g5xmr")
+
+[node name="money" type="TextureRect" parent="." index="1"]
+offset_left = 356.0
+offset_top = -18.0
+offset_right = 669.0
+offset_bottom = 126.0
+texture = ExtResource("3_4jk7t")
+
+[node name="moneyNum" type="RichTextLabel" parent="money" index="0"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 45.0
+offset_right = 260.0
+offset_bottom = 107.0
+theme = ExtResource("6_y7mif")
+bbcode_enabled = true
+text = "[center]$ 500[/center]"
+scroll_active = false
+
+[node name="lives" type="TextureRect" parent="." index="2"]
+offset_left = -14.0
+offset_top = -32.0
+offset_right = 287.0
+offset_bottom = 134.0
+texture = ExtResource("4_rceun")
+
+[node name="LivesNum" type="RichTextLabel" parent="lives" index="0"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 71.0
+offset_right = 103.0
+offset_bottom = 96.0
+theme = ExtResource("6_y7mif")
+theme_override_colors/default_color = Color(0.694118, 0.694118, 0.694118, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]5[/center]"
+scroll_active = false
+
+[node name="Timer" type="Timer" parent="lives" index="1"]
+
+[node name="LivesTime" type="RichTextLabel" parent="lives" index="2"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 56.0
+offset_right = 248.0
+offset_bottom = 109.0
+theme = ExtResource("6_y7mif")
+bbcode_enabled = true
+text = "[center]Full[/center]"
+
+[node name="AnimationPlayer" parent="." index="3"]
+reset_on_save = false
+
+[connection signal="pressed" from="MarginContainer/Buttons and Graphics/Buttons/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="MarginContainer/Buttons and Graphics/Buttons/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="timeout" from="lives/Timer" to="." method="_on_timer_timeout"]

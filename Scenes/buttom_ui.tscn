@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://d25ca8t1ty8fp"]
+
+[ext_resource type="Texture2D" uid="uid://bgejo06yixy5l" path="res://art/BottomUi.png" id="1_g6n8r"]
+[ext_resource type="Script" path="res://scripts/buttom_ui.gd" id="2_agaoa"]
+[ext_resource type="Script" path="res://scripts/BoosterManager.gd" id="3_bfd48"]
+[ext_resource type="Texture2D" uid="uid://g1p0b838wwqs" path="res://art/pause_button.png" id="3_haboo"]
+[ext_resource type="Texture2D" uid="uid://buymi878uqnpn" path="res://art/sniper_booster.png" id="4_fac5c"]
+[ext_resource type="Texture2D" uid="uid://qytgsv5uhe57" path="res://art/flask_booster.png" id="5_t0kwf"]
+[ext_resource type="Script" path="res://scripts/Booster1.gd" id="6_f2rlx"]
+[ext_resource type="Texture2D" uid="uid://rowgfp3rc7bx" path="res://art/key_booster.png" id="6_wxqd1"]
+
+[node name="buttom_ui" type="TextureRect"]
+offset_left = 1.0
+offset_top = 1025.0
+offset_right = 647.0
+offset_bottom = 1142.0
+texture = ExtResource("1_g6n8r")
+script = ExtResource("2_agaoa")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = -4.0
+offset_right = 638.0
+offset_bottom = 112.0
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = -32
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("3_bfd48")
+
+[node name="Pause" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(155, 120)
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("3_haboo")
+stretch_mode = 5
+
+[node name="Booster1" type="TextureButton" parent="MarginContainer/HBoxContainer" groups=["Boosters"]]
+custom_minimum_size = Vector2(155, 120)
+layout_mode = 2
+texture_normal = ExtResource("5_t0kwf")
+stretch_mode = 5
+script = ExtResource("6_f2rlx")
+flask_piece_texture = ExtResource("5_t0kwf")
+sniper_piece_texture = ExtResource("4_fac5c")
+key_piece_texture = ExtResource("6_wxqd1")
+
+[node name="Booster2" type="TextureButton" parent="MarginContainer/HBoxContainer" groups=["Boosters"]]
+custom_minimum_size = Vector2(155, 120)
+layout_mode = 2
+texture_normal = ExtResource("4_fac5c")
+stretch_mode = 5
+script = ExtResource("6_f2rlx")
+flask_piece_texture = ExtResource("5_t0kwf")
+sniper_piece_texture = ExtResource("4_fac5c")
+key_piece_texture = ExtResource("6_wxqd1")
+
+[node name="Booster3" type="TextureButton" parent="MarginContainer/HBoxContainer" groups=["Boosters"]]
+custom_minimum_size = Vector2(155, 120)
+layout_mode = 2
+texture_normal = ExtResource("6_wxqd1")
+stretch_mode = 5
+script = ExtResource("6_f2rlx")
+flask_piece_texture = ExtResource("5_t0kwf")
+sniper_piece_texture = ExtResource("4_fac5c")
+key_piece_texture = ExtResource("6_wxqd1")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Booster1" to="." method="_on_booster_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Booster2" to="." method="_on_booster_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Booster3" to="." method="_on_booster_3_pressed"]

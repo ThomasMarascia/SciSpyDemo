@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://q5egh5k8pyd5"]
+
+[ext_resource type="PackedScene" uid="uid://b87tm00nmh6e8" path="res://Scenes/BaseMenuPanel.tscn" id="1_5airr"]
+[ext_resource type="Script" path="res://scripts/settings.gd" id="2_0yhg3"]
+[ext_resource type="Texture2D" uid="uid://bs3pcwues7rrd" path="res://art/settings_rm_background.png" id="3_fbcoh"]
+[ext_resource type="Texture2D" uid="uid://c8qgi6qcqef55" path="res://art/temp_sound/temp_sound_off.png" id="4_6fcks"]
+[ext_resource type="Texture2D" uid="uid://bqbmi2kvrli00" path="res://art/temp_sound/temp_sound_on.png" id="4_rxkda"]
+[ext_resource type="Texture2D" uid="uid://bm54hs5lvtu2d" path="res://art/temp_back.png" id="5_fjw4r"]
+
+[node name="Settings" instance=ExtResource("1_5airr")]
+script = ExtResource("2_0yhg3")
+sound_on_texture = ExtResource("4_rxkda")
+sound_off = ExtResource("4_6fcks")
+music_on = null
+music_off = null
+
+[node name="Graphics" parent="MarginContainer/Buttons and Graphics" index="0"]
+custom_minimum_size = Vector2(512, 218)
+texture = ExtResource("3_fbcoh")
+
+[node name="Button1" parent="MarginContainer/Buttons and Graphics/Buttons" index="0"]
+custom_minimum_size = Vector2(512, 218)
+
+[node name="Button2" parent="MarginContainer/Buttons and Graphics/Buttons" index="1"]
+custom_minimum_size = Vector2(512, 500)
+
+[node name="back_btn" type="TextureButton" parent="MarginContainer/Buttons and Graphics/Buttons" index="2"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("5_fjw4r")
+
+[node name="AnimationPlayer" parent="." index="1"]
+reset_on_save = false
+
+[connection signal="pressed" from="MarginContainer/Buttons and Graphics/Buttons/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="MarginContainer/Buttons and Graphics/Buttons/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="MarginContainer/Buttons and Graphics/Buttons/back_btn" to="." method="_on_back_btn_pressed"]

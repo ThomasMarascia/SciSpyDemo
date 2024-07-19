@@ -1,0 +1,66 @@
+[gd_scene load_steps=14 format=3 uid="uid://3soxauqll1rt"]
+
+[ext_resource type="Script" path="res://scripts/animated_cop_car.gd" id="1_n4e2g"]
+[ext_resource type="Texture2D" uid="uid://btbon783inwlg" path="res://art/Effects/cop_car_1.png" id="2_smjir"]
+[ext_resource type="Texture2D" uid="uid://drmpltsf34dfd" path="res://art/Effects/cop_car_2.png" id="3_fsjil"]
+[ext_resource type="Texture2D" uid="uid://d2ix1ybkd2cjx" path="res://art/Effects/cop_car_3.png" id="4_h2pmd"]
+[ext_resource type="Texture2D" uid="uid://yxxtxatjdx4d" path="res://art/Effects/cop_car_4.png" id="5_62pj4"]
+[ext_resource type="Texture2D" uid="uid://b78ks0dl51m4r" path="res://art/Effects/cop_car_5.png" id="6_6206t"]
+[ext_resource type="Texture2D" uid="uid://gppfscqleqwl" path="res://art/Effects/cop_car_6.png" id="7_hb75h"]
+[ext_resource type="Texture2D" uid="uid://bvswv863n468l" path="res://art/Effects/cop_car_7.png" id="8_x1ugd"]
+[ext_resource type="Texture2D" uid="uid://cq7q1ogx6osod" path="res://art/Effects/cop_car_8.png" id="9_af1ka"]
+[ext_resource type="Texture2D" uid="uid://dx20pkhkklhpp" path="res://art/Effects/cop_car_9.png" id="10_fa1el"]
+[ext_resource type="Texture2D" uid="uid://bwupuu8ih72i2" path="res://art/Effects/cop_car_10.png" id="11_s2ois"]
+[ext_resource type="Texture2D" uid="uid://bi5wfppkafcq2" path="res://art/Effects/cop_car_11.png" id="12_4s66v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmwy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_smjir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fsjil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h2pmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_62pj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6206t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hb75h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x1ugd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_af1ka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fa1el")
+}, {
+"duration": 2.0,
+"texture": ExtResource("11_s2ois")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4s66v")
+}],
+"loop": false,
+"name": &"cop_car",
+"speed": 10.0
+}]
+
+[node name="animated_cop_car" type="Node2D"]
+script = ExtResource("1_n4e2g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xmwy8")
+animation = &"cop_car"
+frame = 10
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

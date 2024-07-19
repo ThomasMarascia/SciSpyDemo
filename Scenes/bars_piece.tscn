@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxde730tssx1d"]
+
+[ext_resource type="Texture2D" uid="uid://cxaxr6svvw1r2" path="res://art/bars_piece_stage1.png" id="1_50vxc"]
+[ext_resource type="Script" path="res://scripts/bars_piece.gd" id="2_h7wk2"]
+[ext_resource type="Script" path="res://scripts/bars_sprite.gd" id="3_svo3s"]
+
+[node name="bars_piece" type="Node2D"]
+script = ExtResource("2_h7wk2")
+health = 3
+color = "bars"
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_50vxc")
+script = ExtResource("3_svo3s")
+
+[connection signal="visible_damage" from="." to="sprite" method="_on_bars_piece_visible_damage"]

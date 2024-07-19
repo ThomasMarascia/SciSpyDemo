@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6jdvd1w4ox4v"]
+
+[ext_resource type="Texture2D" uid="uid://b8mnuexs80dag" path="res://art/backgroundresized.png" id="1_uskud"]
+[ext_resource type="Script" path="res://scripts/level_backdrop.gd" id="2_n22e0"]
+[ext_resource type="PackedScene" uid="uid://dobyvupxmpum5" path="res://Scenes/level_btn.tscn" id="2_w1kou"]
+[ext_resource type="Texture2D" uid="uid://ltebeo3ac7ft" path="res://art/Level_Map/back.png" id="3_vy3y5"]
+
+[node name="LevelBackdrop" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_uskud")
+script = ExtResource("2_n22e0")
+
+[node name="Level1" parent="." instance=ExtResource("2_w1kou")]
+position = Vector2(101, 103)
+level = 1
+level_to_load = "res://Levels/level1.tscn"
+
+[node name="Level2" parent="." instance=ExtResource("2_w1kou")]
+position = Vector2(255, 104)
+level = 2
+level_to_load = "res://Levels/level2.tscn"
+
+[node name="Level3" parent="." instance=ExtResource("2_w1kou")]
+position = Vector2(413, 106)
+level = 3
+level_to_load = "res://Levels/level3.tscn"
+
+[node name="Level4" parent="." instance=ExtResource("2_w1kou")]
+position = Vector2(568, 106)
+level = 4
+level_to_load = "res://Levels/level4.tscn"
+
+[node name="Level5" parent="." instance=ExtResource("2_w1kou")]
+position = Vector2(108, 249)
+level = 5
+level_to_load = "res://Levels/level5.tscn"
+
+[node name="Level6" parent="." instance=ExtResource("2_w1kou")]
+position = Vector2(253, 247)
+level = 6
+
+[node name="Level7" parent="." instance=ExtResource("2_w1kou")]
+position = Vector2(415, 247)
+level = 7
+
+[node name="Level8" parent="." instance=ExtResource("2_w1kou")]
+position = Vector2(570, 248)
+level = 8
+
+[node name="Level9" parent="." instance=ExtResource("2_w1kou")]
+position = Vector2(256, 383)
+level = 9
+
+[node name="Level10" parent="." instance=ExtResource("2_w1kou")]
+position = Vector2(421, 380)
+level = 10
+
+[node name="back_button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 1066.0
+offset_right = 599.0
+offset_bottom = 1447.0
+scale = Vector2(0.22861, 0.187216)
+texture_normal = ExtResource("3_vy3y5")
+stretch_mode = 0
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://deh1m5s1vrwgo"]
+
+[ext_resource type="Texture2D" uid="uid://dpgkmidmitn5l" path="res://art/blue_piece.png" id="2_5ugof"]
+[ext_resource type="Script" path="res://scripts/GoalPrefab.gd" id="2_s8j1o"]
+
+[node name="GoalPrefab" type="TextureRect"]
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 74.0
+offset_bottom = 154.0
+expand_mode = 1
+script = ExtResource("2_s8j1o")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 73.0
+offset_bottom = 124.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_5ugof")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0/5"
+horizontal_alignment = 1
+vertical_alignment = 1

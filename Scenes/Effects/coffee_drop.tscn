@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8dnbyskk3j2w"]
+
+[ext_resource type="Script" path="res://scripts/coffee_drop.gd" id="1_4d38k"]
+[ext_resource type="Texture2D" uid="uid://dcii4ax31iayx" path="res://art/Effects/coffee_spill_6.png" id="2_a2322"]
+[ext_resource type="Texture2D" uid="uid://jhiiipovyx67" path="res://art/Effects/coffee_spill_7.png" id="3_a61qu"]
+[ext_resource type="Texture2D" uid="uid://vjp8cj6g87lk" path="res://art/Effects/coffee_spill_8.png" id="4_a1ubf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l1y6u"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_a2322")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_a61qu")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_a1ubf")
+}],
+"loop": false,
+"name": &"coffee_drop",
+"speed": 3.0
+}]
+
+[node name="coffee_drop" type="Node2D"]
+script = ExtResource("1_4d38k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l1y6u")
+animation = &"coffee_drop"
+frame = 2
+frame_progress = 1.0
+speed_scale = 0.5
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

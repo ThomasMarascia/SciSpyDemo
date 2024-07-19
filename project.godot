@@ -1,0 +1,62 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="MobileMatch3"
+run/main_scene="res://Scenes/game_menu.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+BoosterInfo="*res://scripts/BoosterInfo.gd"
+SaveandLoad="*res://scripts/SaveLoad.gd"
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+ConfigManager="*res://scripts/config_manager.gd"
+GameDataManager="*res://scripts/GameDataManager.gd"
+SoundManager="*res://Scenes/sound_manager.tscn"
+
+[display]
+
+window/size/viewport_width=648
+window/size/viewport_height=1152
+window/size/always_on_top=true
+window/size/window_width_override=432
+window/size/window_height_override=768
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
+window/handheld/orientation=1
+
+[dotnet]
+
+project/assembly_name="testMobile"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg")
+
+[input]
+
+ui_touch={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(59, 13),"global_position":Vector2(63, 56),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

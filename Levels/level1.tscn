@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://qu3xs8q4fhsy"]
+
+[ext_resource type="PackedScene" uid="uid://c71npvdo00dv6" path="res://Scenes/game_window.tscn" id="1_e70ww"]
+
+[node name="GameWindow" instance=ExtResource("1_e70ww")]
+
+[node name="grid" parent="." index="2"]
+empty_spaces = PackedVector2Array(0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 7, 1, 7, 2, 7, 3, 7, 4, 7, 5, 7, 6)
+
+[node name="Goal" parent="GoalHolder" index="0"]
+max_needed = 12
+
+[editable path="CanvasLayer"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bximeh2mk7kij"]
+
+[ext_resource type="Texture2D" uid="uid://c5jqxn2xil0rf" path="res://art/basic_grid_background.png" id="1_dphkj"]
+
+[node name="grid_back" type="TextureRect"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 576.0
+offset_bottom = 576.0
+texture = ExtResource("1_dphkj")

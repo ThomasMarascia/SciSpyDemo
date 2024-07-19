@@ -1,0 +1,13 @@
+Tutorial 1
+Welcome, agent! Your mission is simple: match the pieces. 
+We're working to reach our quota for each mission without using too many moves.
+Let's practice a bit first.
+See those two pieces with a third one offset from that line? Try swapping that offset
+piece into the line to create a row of 3.
+
+Great job! Now make 3 more matches on the board to complete this level.
+
+2
+Power pieces from more than 3 matches
+
+3

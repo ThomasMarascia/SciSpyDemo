@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7sjcrps0pnme"]
+
+[ext_resource type="PackedScene" uid="uid://b6jdvd1w4ox4v" path="res://Scenes/level_backdrop.tscn" id="1_ebsdu"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="VScrollBar" type="VScrollBar" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VScrollBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LevelBackdrop" parent="VScrollBar/VBoxContainer" instance=ExtResource("1_ebsdu")]
+layout_mode = 2
